@@ -91,3 +91,4 @@ if __name__ == '__main__':
     fruits.pprint()
     fruits.delete('potato')
     fruits.pprint()
+    fruits.size()
