@@ -67,17 +67,17 @@ class LinkedList:
         item1_idx = self.search(item1)
         item2_idx = self.search(item2)
 
-        
+
         for i in range(item1_idx-1): # target node 의 1개 전까지 찾아주는 loop
             item1_node_pre = item1_node_pre.link
         for i in range(item2_idx-1):
             item2_node_pre = item2_node_pre.link
-        
+
         if item1_idx > item2_idx:
             _tmp = item1_idx
             item1_idx = item2_idx
             item2_idx = _tmp # 작은 index를 item1로 변경
-        
+
         # if item1_idx == 1:
         #     self.root.link = 
 
@@ -103,19 +103,19 @@ class LinkedList:
 if __name__ == '__main__':
     fruits = LinkedList()
     # fruits.pprint()
-    fruits.append('11')
-    fruits.append('22')
-    fruits.append('33')
-    fruits.append('44')
-    fruits.append('55')
-    fruits.append('66')
-    fruits.append('77')
-    fruits.append('88')
-    fruits.append('99')
-    # fruits.pprint()
-    fruits.switch('33','77')
-    # fruits.size()
+    fruits.append('사과')
+    fruits.append('딸기')
+    fruits.append('배')
+    fruits.append('오렌지')
+    fruits.append('포도')
+    fruits.append('수박')
+    fruits.append('블루베리')
+    fruits.append('레몬')
+    fruits.append('자두')
     fruits.pprint()
-    # fruits.search('apple')
-    # fruits.delete('cherry')
-    # fruits.size()
+    fruits.switch('배','블루베리')
+    fruits.size()
+    fruits.pprint()
+    fruits.search('사과')
+    fruits.delete('딸기')
+    fruits.size()
