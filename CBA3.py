@@ -1,4 +1,4 @@
-from CBA2 import LinkedList, Node
+from CBA2 import LinkedList
 
 
 
@@ -9,12 +9,18 @@ class Poly3:
     def setCoef(self,coef):
         self.linked_list.append(coef)
     def getCoef(self,order):
-        pass
+        curNode = self.linked_list.root
+        for i in range(order):
+            curNode = curNode.link
+        if curNode.item[1] == order:
+            return curNode.item[0]
+        else:
+            return 0
 
     @classmethod
     def add(cls,poly1,poly2): # linkedList type -> self.root부터 시작해서 더하기
-        curNode_1 = poly1.linked_list.root
-        curNode_2 = poly2.linked_list.root
+        maxOrder = max(poly1.maxOrder, poly2.maxOrder)
+        poly3 = Poly3(maxOrder)
          
 
 
@@ -33,3 +39,4 @@ if __name__ == '__main__':
     forth_order.setCoef((5,2))
     forth_order.setCoef((4,3))
     forth_order.linked_list.pprint()
+    print(third_order.linked_list.root.link.item)
