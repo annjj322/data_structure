@@ -1,13 +1,14 @@
 from CBA2 import LinkedList
 
 
-
 class Poly3:
     def __init__(self,maxOrder): # coefficient, order
         self.linked_list = LinkedList()
         self.maxOrder = maxOrder
+
     def setCoef(self,coef):
         self.linked_list.append(coef)
+
     def getCoef(self,order):
         curNode = self.linked_list.root # None 방지
         for i in range(order+1):
@@ -21,7 +22,6 @@ class Poly3:
             return 0
         else:
             return curNode.item[0]
-
 
     @classmethod
     def add(cls,poly1,poly2): # linkedList type -> self.root부터 시작해서 더하기
