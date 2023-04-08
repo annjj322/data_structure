@@ -2,10 +2,6 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-np.random.seed(seed = 1)
-u = np.random.random(1000)
-lamda = 1
-x = -lamda * np.log(u) # 난수
 
 
 
@@ -57,38 +53,55 @@ class Shop:
             return self.custQueue[0]
         else:
             return None
+    
+    def getLast(self):
+        if self.isEmpty() == False:
+            return self.custQueue[-1]
+        else:
+            pass
         
+def randNum(lamda):
+    u = np.random.random(1)
+    x = -lamda * np.log(u)
+    return x[0]
 
 def main():
     # 난수를 생성하고 현재시간을 0~60*14 만큼 늘려가면서 cust 생성
     
+    
     # main loop
     curTime = 0
-    randTime = x
     i = 0
     coffeeShop = Shop() # shop 선언
-    preCurTime = None
     custList = []
+    # randTime = x1 # 2번 추가문제 이전 내용
+
     while curTime < 14*60: # min
-        curTime += randTime[i]
+        if 5*60 < curTime < 6*60 :
+            curTime += randNum(0.5)
+        else:
+            curTime += randNum(1)
+        # if 5*60 < curTime < 6*60 :
+        #     randTime = x2
+        # else:
+        #     randTime = x1
         try :
-            randCust = Cust(curTime,preCurTime.orderT) # random num 숫자를 대입
+            preOut = coffeeShop.getLast().outT
+            randCust = Cust(curTime,preOut) # pre cust out time
         except AttributeError:
             randCust = Cust(curTime)
         coffeeShop.entCust(randCust) # shop 입장
         
         # Cust OUT
-        for j in range(coffeeShop.getSize()):    
+        for j in range(coffeeShop.getSize()-1):    
             coffeeShop.outCust(randCust) # 일단 길이만큼 실행
-        
-        # pre data
-        preCurTime = curTime
 
         # Cust NUM
         custList.append(coffeeShop.getSize())
         i += 1
     print(custList)
-    print(max(custList))
+    print(max(custList)) # Queue의 최대인원
+    plt.figure(3)
     plt.plot(custList)
     plt.show()
         

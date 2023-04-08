@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QMainWindow,QApplication
 from PyQt5.uic import loadUiType
 from postFixAlgorithm import Calculator
 
-form_class=loadUiType("SimpleCalc.ui")[0]
+form_class=loadUiType("Calculator\\SimpleCalc.ui")[0]
 
 class CalcClass(QMainWindow, form_class):
     def __init__(self, parent=None):
